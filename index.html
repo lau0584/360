@@ -1,67 +1,242 @@
 <!doctype html>
 <html lang="es">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>360 - Página</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Licores360</title>
+  <meta name="description" content="Tienda online de licores: whiskys, rones, vinos y destilados premium.">
   <style>
-    body{font-family:Arial,Helvetica,sans-serif;margin:0;padding:0;background:#fafafa;color:#222}
-    header{background:#2b3a42;color:#fff;padding:18px 20px}
-    .wrap{max-width:1000px;margin:24px auto;padding:0 16px}
-    .gallery{display:flex;flex-wrap:wrap;gap:12px}
-    .gallery img{max-width:100%;height:auto;border-radius:8px;box-shadow:0 2px 6px rgba(0,0,0,.12)}
-    .card{flex:1 1 220px;background:#fff;padding:12px;border-radius:8px;box-shadow:0 1px 4px rgba(0,0,0,.06)}
-    footer{padding:18px;text-align:center;color:#666;font-size:14px}
-    a.button{display:inline-block;padding:8px 12px;background:#0b79d0;color:#fff;border-radius:6px;text-decoration:none}
+    /* Reset básico */
+    *{box-sizing:border-box;margin:0;padding:0}
+    html,body{height:100%;font-family:Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial; color:#222}
+
+    /* Variables de color */
+    :root{
+      --bg:#0f1724; /* oscuro */
+      --card:#0b1220;
+      --accent:#d559ee; /* dorado */
+      --muted:#f848d2;
+      --glass: rgba(255,255,255,0.04);
+    }
+
+    body{background:linear-gradient(180deg,#0f0f0f 0%, #0f1724 100%);padding:32px}
+    .container{max-width:1100px;margin:0 auto}
+
+    /* Header */
+    header{display:flex;align-items:center;justify-content:space-between;padding:18px 24px;background:transparent}
+    .brand{display:flex;gap:14px;align-items:center}
+    .logo{width:56px;height:56px;border-radius:8px;background:linear-gradient(135deg,var(--accent),#f7d08a);display:flex;align-items:center;justify-content:center;color:#0b1220;font-weight:700;font-size:18px}
+    .brand h1{color:white;font-size:20px}
+    .brand p{color:var(--muted);font-size:13px}
+
+    nav a{color:var(--muted);text-decoration:none;margin-left:18px;font-weight:600}
+    nav a.cta{background:var(--accent);color:#081025;padding:10px 14px;border-radius:10px}
+
+    /* Hero */
+    .hero{display:grid;grid-template-columns:1fr 420px;gap:28px;align-items:center;margin-top:28px}
+    .hero .intro{background:linear-gradient(180deg, rgba(255,255,255,0.02), transparent);padding:28px;border-radius:16px}
+    .intro h2{color:rgb(238, 218, 235);font-size:28px;margin-bottom:12px}
+    .intro p{color:var(--muted);line-height:1.5;margin-bottom:18px}
+    .buttons{display:flex;gap:12px}
+    .btn{padding:12px 16px;border-radius:10px;font-weight:700;text-decoration:none}
+    .btn.primary{background:var(--accent);color:#0e0d0e}
+    .btn.ghost{border:1px solid rgba(68, 13, 90, 0.966);color:var(--muted);background:transparent}
+
+    .hero .cover{border-radius:16px;overflow:hidden;background:linear-gradient(180deg, rgba(255,255,255,0.03), transparent)}
+    .cover img{width:100%;height:100%;object-fit:cover;display:block}
+
+    /* Productos */
+    .section{margin-top:28px}
+    .section h3{color:white;margin-bottom:14px}
+    .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+    .card{background:var(--card);padding:14px;border-radius:12px;backdrop-filter: blur(6px);box-shadow:0 6px 18px rgba(2,6,23,0.6);display:flex;flex-direction:column}
+    .card img{width:100%;height:200px;object-fit:cover;border-radius:8px;margin-bottom:10px}
+    .meta{display:flex;justify-content:space-between;align-items:center}
+    .meta h4{color:white;font-size:16px}
+    .meta span{color:var(--accent);font-weight:700}
+    .desc{color:var(--muted);font-size:13px;margin:10px 0 14px}
+    .price-row{display:flex;justify-content:space-between;align-items:center}
+    .add{background:var(--accent);padding:10px 12px;border-radius:10px;font-weight:700}
+
+    /* About & Footer */
+    .about{display:flex;gap:18px;align-items:center;padding:18px;background:var(--glass);border-radius:12px;margin-top:24px}
+    .about img{width:160px;height:120px;object-fit:cover;border-radius:8px}
+    .about p{color:var(--muted);line-height:1.5}
+
+    footer{margin-top:30px;color:var(--muted);font-size:13px;text-align:center}
+
+    /* Responsive */
+    @media (max-width:900px){
+      .hero{grid-template-columns:1fr;}
+      .grid{grid-template-columns:repeat(2,1fr)}
+    }
+    @media (max-width:600px){
+      body{padding:16px}
+      .grid{grid-template-columns:1fr}
+      nav a{display:none}
+      .logo{width:48px;height:48px}
+    }
   </style>
 </head>
 <body>
-  <header>
-    <div class="wrap">
-      <h1>360 — Demo</h1>
-      <p style="margin:6px 0 0;">Si faltan recursos (imágenes, rutas) la página mostrará errores 404. Asegúrate de subir los archivos que uses.</p>
-    </div>
-  </header>
-
-  <main class="wrap" role="main">
-    <section>
-      <h2>Imágenes disponibles</h2>
-      <div class="gallery">
-        <div class="card">
-          <h3>Galería</h3>
-          <p>Estas imágenes están en tu repo (si no, súbelas):</p>
-          <ul>
-            <li>cervezas.jpg</li>
-            <li>coctel de niños.jpeg</li>
-            <li>jugos naturales.jpg</li>
-            <li>logo.jpeg</li>
-            <li>vinos.jpeg</li>
-          </ul>
-        </div>
-
-        <!-- Mostrar imágenes solo si existen -->
-        <div class="card">
-          <img src="cervezas.jpg" alt="cervezas" />
-          <p>cervezas.jpg</p>
-        </div>
-
-        <div class="card">
-          <img src="logo.jpeg" alt="logo" />
-          <p>logo.jpeg</p>
+  <div class="container">
+    <header>
+      <div class="brand">
+        <div class="logo">360</div>
+        <div>
+          <h1>LICORES.360</h1>
+          <p>Selección premium de licores</p>
         </div>
       </div>
-    </section>
+      <nav>
+        <a href="#productos">Productos</a>
+        <a href="#nosotros">Nosotros</a>
+        <a href="#contacto" class="cta">Contáctanos</a>
+      </nav>
+    </header>
 
-    <section style="margin-top:20px;">
-      <h2>Enlace a la versión pública</h2>
-      <p>Después de completar los pasos, tu sitio estará en: <strong>https://lau0584.github.io/360/</strong></p>
-      <p><a class="button" href="https://lau0584.github.io/360/" target="_blank" rel="noopener">Abrir sitio</a></p>
-    </section>
-  </main>
+    <main>
+      <section class="hero">
+        <div class="intro">
+          <h2>Descubre sabores que cuentan historias</h2>
+          <p>cocteles,bebidas decoradas para niños, jugos naturales.</p>
+          <div class="buttons">
+            <a class="btn primary" href="#productos">Ver productos</a>
+            <a class="btn ghost" href="#nosotros">Conócenos</a>
+          </div>
+        </div>
 
-  <footer>
-    Generado automáticamente — Renombra `INDEX.HTML.html` a `index.html` y activa GitHub Pages.
-  </footer>
+        <div class="cover">
+          <!-- Imagen de portada: puedes cambiar la URL por una local en carpeta /images -->
+          <img src="logo.jpeg" alt="Botellas premium">
+        </div>
+      </section>
+
+      <section id="productos" class="section">
+        <h3>Nuestros productos</h3>
+        <div class="grid">
+
+          <article class="card">
+            <img src="coctel azul.avif" alt="Whisky">
+            <div class="meta">
+              <h4>COCTEL BLUE</h4>
+              <span>$20.000</span>
+            </div>
+            <p class="desc">Sabor a Cuña de lima, acompañado de tequila, licor de Curaçao azul, zumo de lima recién exprimido  rodaja de naranja o cereza para decorar..</p>
+            <div class="price-row">
+              <small style="color:var(--muted)">175 ml</small>
+              <button class="add">Añadir</button>
+            </div>
+          </article>
+
+          <article class="card">
+            <img src="jugos naturales.jpg" alt="Ron">
+            <div class="meta">
+              <h4>jugos frutales</h4>
+              <span>$8.000</span>
+            </div>
+            <p class="desc">jugos frutales</p>
+            <div class="price-row">
+              <small style="color:var(--muted)">750 ml</small>
+              <button class="add">Añadir</button>
+            </div>
+          </article>
+
+          <article class="card">
+            <img src="cervezas.jpg" alt="Vino">
+            <div class="meta">
+              <h4>cervezas</h4>
+              <span>$5.000</span>
+            </div>
+            <p class="desc">coronita, poker, aguila, costeña, heineken.</p>
+            <div class="price-row">
+              <small style="color:var(--muted)">750 ml</small>
+              <button class="add">Añadir</button>
+            </div>
+          </article>
+
+          <article class="card">
+            <img src="coctel de niños.jpeg" alt="Tequila">
+            <div class="meta">
+              <h4>blue lagoon</h4>
+              <span>$12.000</span>
+            </div>
+            <p class="desc">chamoy sabor mora azul, polvo sabor mora azul, taza de bebida energizante sabor mora azul, refresco de lima limón, cerezas en almíbar, 6 gomitas, 1 palo de madera para brocheta.</p>
+            <div class="price-row">
+              <small style="color:var(--muted)">700 ml</small>
+              <button class="add">Añadir</button>
+            </div>
+          </article>
+
+          <article class="card">
+            <img src="jugo verde.jpg" alt="Ginebra">
+            <div class="meta">
+              <h4>Ginebra Botánica</h4>
+              <span>$10.000</span>
+            </div>
+            <p class="desc">jugos con muchas verduras que cada uno ayuda en algo diferente.</p>
+            <div class="price-row">
+              <small style="color:var(--muted)">700 ml</small>
+              <button class="add">Añadir</button>
+            </div>
+          </article>
+
+          <article class="card">
+            <img src="vinos.jpeg" alt="Licor de café">
+            <div class="meta">
+              <h4>Vinos</h4>
+              <span>$30.000</span>
+            </div>
+            <p class="desc">Vino tinto.
+                            Vino rosado.
+                            Vino generoso.
+                            Vino dulce.</p>
+            <div class="price-row">
+              <small style="color:var(--muted)">500 ml</small>
+              <button class="add">Añadir</button>
+            </div>
+          </article>
+
+        </div>
+      </section>
+
+      <section id="nosotros" class="about section">
+        <img src="lugar.jpeg" alt="Tienda">
+        <div>
+          <h3 style="color:white;margin-bottom:8px">Sobre LICORES_360</h3>
+          <p>LICORES_360. Seleccionamos productores responsables y ofrecemos asesoría para elegir el licor ideal según ocasión y paladar.SOLO VENDEMOS EN NUESTRA TIENDA FISICA.</p>
+      </section>
+
+      <section id="contacto" class="section" style="margin-top:18px">
+        <h3>Contacto</h3>
+        <div style="display:flex;gap:18px;flex-wrap:wrap;margin-top:12px">
+          <div style="flex:1;min-width:240px;background:var(--card);padding:16px;border-radius:12px">
+            <h4 style="color:white;margin-bottom:8px">Visítanos</h4>
+            <p style="color:var(--muted)">CHAPINERO</p>
+            <p style="color:var(--muted)">Tel: +57 316 451 1824</p>
+            <a href="https://github.com/lolita12-tech/file-C-xampp-htdocs-360_PROYECTO-INDEX.html-nosotros.git" target="_blank">LICORES_360.COM</a>
+             </div>
+          <form style="flex:1;min-width:260px;background:var(--card);padding:16px;border-radius:12px" onsubmit="event.preventDefault();alert('Formulario simulado — implementar backend');">
+            <label style="color:var(--muted);font-size:13px">Nombre</label>
+            <input style="width:100%;padding:10px;border-radius:8px;border:1px solid rgba(255,255,255,0.04);margin-top:6px;background:transparent;color:white" required>
+            <label style="color:var(--muted);font-size:13px;margin-top:10px;display:block">Mensaje</label>
+            <textarea style="width:100%;padding:10px;border-radius:8px;border:1px solid rgba(255,255,255,0.04);margin-top:6px;background:transparent;color:white;min-height:90px" required></textarea>
+            <div style="margin-top:10px;text-align:right">
+              <button type="submit" style="padding:10px 14px;border-radius:8px;background:var(--accent);font-weight:700;border:none;color:#081025">Enviar</button>
+            </div>
+          </form>
+        </div>
+      </section>
+
+    </main>
+
+    <footer>
+      © <span id="year"></span> LICORES_360_ UN GIRO INOLVIDABLE A TU VIDA
+    </footer>
+  </div>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
 </body>
 </html>
-
