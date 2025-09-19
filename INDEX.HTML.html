@@ -1,6 +1,72 @@
 <!doctype html>
 <html lang="es">
 <head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>360 - Página</title>
+  <style>
+    body{font-family:Arial,Helvetica,sans-serif;margin:0;padding:0;background:#fafafa;color:#222}
+    header{background:#2b3a42;color:#fff;padding:18px 20px}
+    .wrap{max-width:1000px;margin:24px auto;padding:0 16px}
+    .gallery{display:flex;flex-wrap:wrap;gap:12px}
+    .gallery img{max-width:100%;height:auto;border-radius:8px;box-shadow:0 2px 6px rgba(0,0,0,.12)}
+    .card{flex:1 1 220px;background:#fff;padding:12px;border-radius:8px;box-shadow:0 1px 4px rgba(0,0,0,.06)}
+    footer{padding:18px;text-align:center;color:#666;font-size:14px}
+    a.button{display:inline-block;padding:8px 12px;background:#0b79d0;color:#fff;border-radius:6px;text-decoration:none}
+  </style>
+</head>
+<body>
+  <header>
+    <div class="wrap">
+      <h1>360 — Demo</h1>
+      <p style="margin:6px 0 0;">Si faltan recursos (imágenes, rutas) la página mostrará errores 404. Asegúrate de subir los archivos que uses.</p>
+    </div>
+  </header>
+
+  <main class="wrap" role="main">
+    <section>
+      <h2>Imágenes disponibles</h2>
+      <div class="gallery">
+        <div class="card">
+          <h3>Galería</h3>
+          <p>Estas imágenes están en tu repo (si no, súbelas):</p>
+          <ul>
+            <li>cervezas.jpg</li>
+            <li>coctel de niños.jpeg</li>
+            <li>jugos naturales.jpg</li>
+            <li>logo.jpeg</li>
+            <li>vinos.jpeg</li>
+          </ul>
+        </div>
+
+        <!-- Mostrar imágenes solo si existen -->
+        <div class="card">
+          <img src="cervezas.jpg" alt="cervezas" />
+          <p>cervezas.jpg</p>
+        </div>
+
+        <div class="card">
+          <img src="logo.jpeg" alt="logo" />
+          <p>logo.jpeg</p>
+        </div>
+      </div>
+    </section>
+
+    <section style="margin-top:20px;">
+      <h2>Enlace a la versión pública</h2>
+      <p>Después de completar los pasos, tu sitio estará en: <strong>https://lau0584.github.io/360/</strong></p>
+      <p><a class="button" href="https://lau0584.github.io/360/" target="_blank" rel="noopener">Abrir sitio</a></p>
+    </section>
+  </main>
+
+  <footer>
+    Generado automáticamente — Renombra `INDEX.HTML.html` a `index.html` y activa GitHub Pages.
+  </footer>
+</body>
+</html>
+<!doctype html>
+<html lang="es">
+<head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <title>Licores360</title>
@@ -239,4 +305,5 @@
     document.getElementById('year').textContent = new Date().getFullYear();
   </script>
 </body>
+
 </html>
